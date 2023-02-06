@@ -1,3 +1,7 @@
+## USER_DEFINED ##
+*.secret.*
+
+## DEFAULT ##
 HELP.md
 .gradle
 build/
