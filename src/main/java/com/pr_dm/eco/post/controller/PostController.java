@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/post")
+@RestController
+@RequestMapping("/post")
 @RequiredArgsConstructor
 public class PostController {
 
