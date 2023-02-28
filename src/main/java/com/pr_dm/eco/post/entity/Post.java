@@ -29,6 +29,7 @@ public class Post {
 
     @CreationTimestamp
     private LocalDateTime registerDate = LocalDateTime.now();
+    private LocalDateTime modifyDate;
 
     //조회수는 나중에...
 
