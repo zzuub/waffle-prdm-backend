@@ -28,6 +28,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // https://mvnrepository.com/artifact/com.google.firebase/firebase-admin
     compileOnly group: 'com.google.firebase', name: 'firebase-admin', version: '9.1.1'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.28'
 }
 
 tasks.named('test') {
