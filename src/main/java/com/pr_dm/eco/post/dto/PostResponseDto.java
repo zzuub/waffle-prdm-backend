@@ -4,11 +4,10 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Builder
 public class PostResponseDto {
     private Long postId;
@@ -20,5 +19,6 @@ public class PostResponseDto {
     private String text;
 
     private LocalDateTime registerDate;
+
     private LocalDateTime modifyDate;
 }
