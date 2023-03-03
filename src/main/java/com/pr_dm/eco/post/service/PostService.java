@@ -10,16 +10,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class PostService {
+    private final PostRepository postRepository;
 
-    public final PostRepository postRepository;
-    public PostResponseDto createPost(PostRequestDto req) {
-        Post post = this.postRepository.save(PostMapper.toPostEntity(req));
+    @Transactional
+    public PostResponseDto createPost(PostRequestDto requestDto) {
+        Post post = this.postRepository.save(PostMapper.toPostEntity(requestDto));
         return PostMapper.toPostResponseDto(post);
     }
 
@@ -35,12 +37,12 @@ public class PostService {
         return PostMapper.toPostResponseDto(post);
     }
 
-    public PostResponseDto updatePost(long postId, PostRequestDto req) {
+    public PostResponseDto updatePost(long postId, PostRequestDto requestDto) {
         Post post = this.postRepository.findById(postId).orElseThrow();
-        if (!req.getTitle().isEmpty())
-            post.setTitle(req.getTitle());
-        if (!req.getText().isEmpty())
-            post.setText(req.getText());
+        if (!requestDto.getTitle().isEmpty())
+            post.setTitle(requestDto.getTitle());
+        if (!requestDto.getText().isEmpty())
+            post.setText(requestDto.getText());
         post.setModifyDate(LocalDateTime.now());
         Post updatedPost = this.postRepository.save(post);
         return PostMapper.toPostResponseDto(updatedPost);

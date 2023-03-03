@@ -2,6 +2,7 @@ package com.pr_dm.eco.post.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +30,17 @@ public class Post {
 
     @CreationTimestamp
     private LocalDateTime registerDate = LocalDateTime.now();
+
+    @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    //조회수는 나중에...
+
+    @Builder
+    public Post(String userId, String title, String text){
+        this.userId = userId;
+        this.title = title;
+        this.text = text;
+    }
 
 
 }
