@@ -15,7 +15,6 @@ import java.util.List;
 
 @Slf4j
 @RestController
-//@RequiredArgsConstructor
 @RequestMapping("/posts")
 public class CategoryController {
     private final CategoryService categoryService;
@@ -26,7 +25,6 @@ public class CategoryController {
     }
 
 
-    //카테고리에 해당하는 모든 게시물 조회
     @GetMapping("/api/v1/category/{categoryId}")
     public ApiResult<List<Category>> findByCategoryId(@PathVariable Category categoryId){
         try{

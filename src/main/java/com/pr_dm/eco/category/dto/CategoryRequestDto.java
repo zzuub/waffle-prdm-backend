@@ -14,9 +14,4 @@ public class CategoryRequestDto {
     private Long categoryId;
 
 
-    /*public CategoryResponse toCategoryResponse(){
-        return new CategoryResponse(this.categoryId, this.categoryName);
-    }*/
-
-
 }

@@ -18,12 +18,5 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    /*private String categoryName;
-
-
-    @Builder
-    public Category(String categoryName){
-        this.categoryName = categoryName;
-    }*/
 
 }
