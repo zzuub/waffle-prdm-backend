@@ -1,11 +1,14 @@
 package com.pr_dm.eco.post.entity;
 
+import com.pr_dm.eco.comment.entity.Comment;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Setter
@@ -14,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Builder
-public class Post {
+public class  Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
@@ -31,6 +34,11 @@ public class Post {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
+    @OneToMany(mappedBy="post", cascade= CascadeType.ALL, orphanRemoval= true)
+    @ToString.Exclude
+    private List<Comment> comments = new ArrayList<>();
+
+    //조회수는 나중에...
     @Enumerated(EnumType.STRING)
     private PostCategory categoryId;
 
