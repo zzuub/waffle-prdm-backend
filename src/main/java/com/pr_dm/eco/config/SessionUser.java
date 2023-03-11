@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 @Getter
 public class SessionUser implements Serializable {
-    private String name;
-    private String nickname;
-    private String email;
+    private final String name;
+    private final String nickname;
+    private final String email;
 
     public SessionUser(User user){
         this.name = user.getName();
