@@ -3,6 +3,7 @@ package com.pr_dm.eco.comment.controller;
 import com.pr_dm.eco.comment.dto.CommentRequestDto;
 import com.pr_dm.eco.comment.dto.CommentResponseDto;
 import com.pr_dm.eco.comment.service.CommentService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "댓글")
 public class CommentController {
 
     private final CommentService commentService;

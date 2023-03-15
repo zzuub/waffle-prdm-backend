@@ -2,6 +2,7 @@ package com.pr_dm.eco.foodwaste.controller;
 
 import com.pr_dm.eco.foodwaste.dto.FoodWasteResponseDto;
 import com.pr_dm.eco.foodwaste.service.FoodWasteService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +17,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "음식물 쓰레기")
 public class FoodWasteController {
 
     private final FoodWasteService foodWasteService;

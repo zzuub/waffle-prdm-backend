@@ -3,6 +3,10 @@ package com.pr_dm.eco.post.controller;
 import com.pr_dm.eco.post.dto.PostRequestDto;
 import com.pr_dm.eco.post.dto.PostResponseDto;
 import com.pr_dm.eco.post.service.PostService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -11,11 +15,13 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "게시글")
 public class PostController {
 
     private final PostService postService;
 
     // TODO : authorization header -> get user id
+    @ApiOperation(value = "create post", notes = "create post")
     @PutMapping("/api/v1/post")
     @ResponseBody
     public PostResponseDto createPost(@RequestBody PostRequestDto requestDto, @RequestHeader String authorization) {
