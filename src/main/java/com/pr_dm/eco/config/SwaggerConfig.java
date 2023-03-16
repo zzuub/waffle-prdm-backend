@@ -1,4 +1,4 @@
-package com.pr_dm.eco.swagger;
+package com.pr_dm.eco.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

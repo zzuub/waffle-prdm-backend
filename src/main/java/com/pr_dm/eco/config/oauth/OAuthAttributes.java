@@ -1,4 +1,4 @@
-package com.pr_dm.eco.config;
+package com.pr_dm.eco.config.oauth;
 
 import com.pr_dm.eco.User.entity.User;
 import com.pr_dm.eco.User.model.Role;

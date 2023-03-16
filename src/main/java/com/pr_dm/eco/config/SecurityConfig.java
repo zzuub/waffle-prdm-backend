@@ -3,6 +3,7 @@ package com.pr_dm.eco.config;
 ///시큐리티 설정
 
 import com.pr_dm.eco.User.model.Role;
+import com.pr_dm.eco.config.oauth.OAuth2UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
