@@ -1,5 +1,6 @@
 package com.pr_dm.eco.foodwaste.controller;
 
+import com.pr_dm.eco.foodwaste.dto.FoodWasteLocationResponseDto;
 import com.pr_dm.eco.foodwaste.dto.FoodWasteResponseDto;
 import com.pr_dm.eco.foodwaste.service.FoodWasteService;
 import io.swagger.annotations.Api;
@@ -27,9 +28,15 @@ public class FoodWasteController {
     @ResponseBody
     public List<FoodWasteResponseDto> getFoodWaste(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end,
+            @RequestParam String location
     ) {
-        return foodWasteService.getFoodWaste(start, end);
+        return foodWasteService.getFoodWaste(start, end, location);
     }
 
+    @GetMapping("/api/v1/foodwaste/locations")
+    @ResponseBody
+    public List<FoodWasteLocationResponseDto> getLocations() {
+        return foodWasteService.getLocations();
+    }
 }
