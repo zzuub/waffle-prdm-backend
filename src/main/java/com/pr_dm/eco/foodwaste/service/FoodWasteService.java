@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 public class FoodWasteService {
     private final FoodWasteRepository foodWasteRepository;
 
-    public List<FoodWasteResponseDto> getFoodWaste(Date start, Date end) {
-        List<FoodWaste> foodWaste = foodWasteRepository.findAllByDateBetween(start, end);
+    public List<FoodWasteResponseDto> getFoodWaste(Date start, Date end, String location) {
+        List<FoodWaste> foodWaste = foodWasteRepository.findAllByDateBetweenAndLocation(start, end, location);
         return foodWaste.stream().map(FoodWasteMapper::toFoodWasteResponseDto).collect(Collectors.toList());
     }
 }

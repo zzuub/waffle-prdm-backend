@@ -8,5 +8,5 @@ import java.util.List;
 
 
 public interface FoodWasteRepository extends JpaRepository<FoodWaste, Long> {
-    List<FoodWaste> findAllByDateBetween(Date start, Date end);
+    List<FoodWaste> findAllByDateBetweenAndLocation(Date start, Date end, String location);
 }

@@ -25,9 +25,10 @@ public class FoodWasteController {
     @ResponseBody
     public List<FoodWasteResponseDto> getFoodWaste(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end,
+            @RequestParam String location
     ) {
-        return foodWasteService.getFoodWaste(start, end);
+        return foodWasteService.getFoodWaste(start, end, location);
     }
 
 }
