@@ -1,4 +1,5 @@
-package com.pr_dm.eco.config;
+/*
+package com.pr_dm.eco.config.oauth;
 
 import com.pr_dm.eco.User.entity.User;
 import lombok.Getter;
@@ -17,3 +18,4 @@ public class SessionUser implements Serializable {
         this.email = user.getEmail();
     }
 }
+*/

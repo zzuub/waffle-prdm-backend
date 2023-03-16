@@ -1,8 +1,10 @@
-package com.pr_dm.eco.config;
+package com.pr_dm.eco.config.oauth;
 
+import com.pr_dm.eco.User.dto.UserDto;
 import com.pr_dm.eco.User.entity.User;
 import com.pr_dm.eco.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -17,6 +19,7 @@ import java.util.Collections;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class OAuth2UserInfoService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
     private final UserRepository userRepository;
     private final HttpSession httpSession;
@@ -32,7 +35,7 @@ public class OAuth2UserInfoService implements OAuth2UserService<OAuth2UserReques
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        httpSession.setAttribute("user", new UserDto(user));
 
         return new DefaultOAuth2User((Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey()))), attributes.getAttributes(), attributes.getNameAttributeKey());
     }
