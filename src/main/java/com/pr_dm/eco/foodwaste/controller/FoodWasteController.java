@@ -1,5 +1,6 @@
 package com.pr_dm.eco.foodwaste.controller;
 
+import com.pr_dm.eco.foodwaste.dto.FoodWasteLocationResponseDto;
 import com.pr_dm.eco.foodwaste.dto.FoodWasteResponseDto;
 import com.pr_dm.eco.foodwaste.service.FoodWasteService;
 import lombok.RequiredArgsConstructor;
@@ -31,4 +32,9 @@ public class FoodWasteController {
         return foodWasteService.getFoodWaste(start, end, location);
     }
 
+    @GetMapping("/api/v1/foodwaste/locations")
+    @ResponseBody
+    public List<FoodWasteLocationResponseDto> getLocations() {
+        return foodWasteService.getLocations();
+    }
 }
