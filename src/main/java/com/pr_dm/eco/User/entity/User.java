@@ -2,12 +2,16 @@ package com.pr_dm.eco.User.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pr_dm.eco.User.model.Role;
+import com.pr_dm.eco.comment.entity.Comment;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -47,5 +51,14 @@ public class User {
     public String getRoleKey(){
         return this.role.getKey();
     }
+
+    /*@JsonManagedReference
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
+    public void writeComment(Comment comment){
+        this.comments.add(comment);
+        comment.writeUser(this);
+    }*/
 
 }
