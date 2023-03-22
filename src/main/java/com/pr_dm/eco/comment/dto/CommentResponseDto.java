@@ -1,5 +1,6 @@
 package com.pr_dm.eco.comment.dto;
 
+import com.pr_dm.eco.User.entity.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 public class CommentResponseDto {
     private Long postId;
 
-    private String userId;
+    private Long userId;
 
     private String text;
 
