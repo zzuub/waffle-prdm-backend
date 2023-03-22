@@ -17,7 +17,7 @@ public class LoginIndexController {
 
     @GetMapping("/logintest")
     public String index(Model model, @LoginUser UserDto user){
-        model.addAttribute("post", postService.findAllDesc());
+        // model.addAttribute("post", postService.findAllDesc());
 
         if(user != null){
             model.addAttribute("username", user.getName());

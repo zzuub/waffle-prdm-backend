@@ -28,8 +28,13 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/","/css/**","/js/**","h2-console/**","/profile").permitAll()
+                        .antMatchers(
+                                /* swagger v3 */
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**").permitAll()
                         .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated()
+                )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/"))
                 .oauth2Login(oauth2Login -> oauth2Login
