@@ -1,28 +1,28 @@
 package com.pr_dm.eco.post.entity;
 
-import com.pr_dm.eco.comment.entity.Comment;
+
+import com.pr_dm.eco.category.entity.Category;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Builder
-public class  Post {
+public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    private String userId;
+    private Long userId;
 
     private String title;
 
@@ -34,20 +34,25 @@ public class  Post {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    @OneToMany(mappedBy="post", cascade= CascadeType.ALL, orphanRemoval= true)
+    //@ManyToOne
+    //@Enumerated(EnumType.STRING)
+
+//    private Long categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    /*@OneToMany(mappedBy="post", cascade= CascadeType.ALL, orphanRemoval= true)
     @ToString.Exclude
-    private List<Comment> comments = new ArrayList<>();
-
-    //조회수는 나중에...
-    @Enumerated(EnumType.STRING)
-    private PostCategory categoryId;
-
+    private List<Comment> comments = new ArrayList<>();*/
 
     @Builder
-    public Post(String userId, String title, String text){
+    public Post(Long userId, String title, String text, Category category){
         this.userId = userId;
         this.title = title;
         this.text = text;
+        this.category = category;
+//        this.categoryId = categoryId;
     }
 
 

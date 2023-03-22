@@ -1,5 +1,7 @@
 package com.pr_dm.eco.post.dto;
 
+
+
 import lombok.*;
 
 @Getter
@@ -7,9 +9,14 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class PostRequestDto {
-    private String userId;
+    private Long userId;
     private String title;
     private String text;
+    private Long categoryId;
 
+    /*public Post toEntity(Category category) {
+
+    }
+*/
 
 }
