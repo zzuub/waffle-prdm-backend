@@ -1,5 +1,6 @@
 package com.pr_dm.eco.category.entity;
 
+import com.pr_dm.eco.category.dto.CategoryDto;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -9,8 +10,8 @@ import javax.persistence.Id;
 
 
 @Getter
+//@AllArgsConstructor
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Builder
 public class Category {
@@ -18,5 +19,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-
+    @Builder
+    public Category(Long categoryId){
+        this.categoryId = categoryId;
+    }
 }

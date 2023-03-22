@@ -22,6 +22,7 @@ public class SecurityConfig {
     @Bean
     protected DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception{
         http
+                .cors().and()
                 .csrf().disable()
                 .headers().frameOptions().disable()
                 .and()

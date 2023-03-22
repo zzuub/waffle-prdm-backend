@@ -21,4 +21,5 @@ public class PostMapper {
                 .registerDate(requestDto.getRegisterDate())
                 .build();
     }
+
 }

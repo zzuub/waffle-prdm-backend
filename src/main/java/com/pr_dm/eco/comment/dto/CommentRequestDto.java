@@ -1,5 +1,6 @@
 package com.pr_dm.eco.comment.dto;
 
+import com.pr_dm.eco.User.entity.User;
 import lombok.*;
 
 @Setter

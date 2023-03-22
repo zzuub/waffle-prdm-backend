@@ -17,9 +17,9 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
-@RequiredArgsConstructor
-@Service
 @Slf4j
+@Service
+@RequiredArgsConstructor
 public class OAuth2UserInfoService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
     private final UserRepository userRepository;
     private final HttpSession httpSession;
