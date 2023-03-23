@@ -1,17 +1,15 @@
 package com.pr_dm.eco.post.controller;
 
 import com.pr_dm.eco.User.entity.User;
+import com.pr_dm.eco.config.oauth.LoginUser;
 import com.pr_dm.eco.post.dto.PostRequestDto;
 import com.pr_dm.eco.post.dto.PostResponseDto;
-import com.pr_dm.eco.post.repository.PostRepository;
 import com.pr_dm.eco.post.service.PostService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController
@@ -20,7 +18,6 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
-    private final PostRepository postRepository;
 
 
     // TODO : authorization header -> get user id
@@ -28,8 +25,8 @@ public class PostController {
     @PostMapping("/api/v1/post")
     @ResponseBody
     public PostResponseDto createPost(@RequestBody PostRequestDto requestDto,
-                                      @PathVariable Long userId) {
-        return postService.createPost(requestDto, userId);
+                                      @LoginUser User user) {
+        return postService.createPost(requestDto, user.getUserId());
     }
 
     @GetMapping("/api/v1/post/list")
