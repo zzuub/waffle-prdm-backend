@@ -16,7 +16,15 @@ public class FoodWaste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long wasteId;
-    private String location;
+
+    @Column(name = "city_do_nm")
+    private String cityDo;
+
+    @Column(name = "city_gn_gu_nm")
+    private String cityGu;
+
+    //@Column(name = "dscamt")
     private Long amount;
+
     private Date date;
 }

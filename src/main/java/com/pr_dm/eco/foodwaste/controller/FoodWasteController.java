@@ -29,14 +29,15 @@ public class FoodWasteController {
     public List<FoodWasteResponseDto> getFoodWaste(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end,
-            @RequestParam String location
+            @RequestParam String cityDo
+            //@RequestParam String cityGu
     ) {
-        return foodWasteService.getFoodWaste(start, end, location);
+        return foodWasteService.getFoodWaste(start, end, cityDo);
     }
 
-    @GetMapping("/api/v1/foodwaste/locations")
+    @GetMapping("/api/v1/foodwaste/city")
     @ResponseBody
-    public List<FoodWasteLocationResponseDto> getLocations() {
-        return foodWasteService.getLocations();
+    public List<FoodWasteLocationResponseDto> getCity() {
+        return foodWasteService.getCity();
     }
 }

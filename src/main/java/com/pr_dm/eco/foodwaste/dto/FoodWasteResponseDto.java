@@ -11,7 +11,8 @@ import java.util.Date;
 @Builder
 public class FoodWasteResponseDto {
     private Long wasteId;
-    private String location;
+    private String cityDo;
+    private String cityGu;
     private Long amount;
     private Date date;
 }

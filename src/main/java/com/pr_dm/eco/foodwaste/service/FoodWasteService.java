@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 public class FoodWasteService {
     private final FoodWasteRepository foodWasteRepository;
 
-    public List<FoodWasteResponseDto> getFoodWaste(Date start, Date end, String location) {
-        List<FoodWaste> foodWaste = foodWasteRepository.findAllByDateBetweenAndLocation(start, end, location);
+    public List<FoodWasteResponseDto> getFoodWaste(Date start, Date end, String cityDo) {
+        List<FoodWaste> foodWaste = foodWasteRepository.findAllByDateBetweenAndCityDo(start, end, cityDo);
         return foodWaste.stream().map(FoodWasteMapper::toFoodWasteResponseDto).collect(Collectors.toList());
     }
 
-    public List<FoodWasteLocationResponseDto> getLocations() {
+    public List<FoodWasteLocationResponseDto> getCity() {
         List<FoodWaste> foodWaste = foodWasteRepository.getDistinctLocationOrderByLocation();
         return foodWaste.stream().map(FoodWasteMapper::toFoodWasteLocationResponseDto).collect(Collectors.toList());
     }
