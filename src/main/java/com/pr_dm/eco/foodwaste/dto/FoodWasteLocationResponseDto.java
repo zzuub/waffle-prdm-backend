@@ -8,5 +8,6 @@ import lombok.*;
 @RequiredArgsConstructor
 @Builder
 public class FoodWasteLocationResponseDto {
-    private String location;
+    private String cityDo;
+    private String cityGu;
 }
