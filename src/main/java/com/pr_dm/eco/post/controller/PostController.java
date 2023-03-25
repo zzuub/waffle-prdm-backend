@@ -47,16 +47,16 @@ public class PostController {
     @ResponseBody
     public PostResponseDto updatePost(@PathVariable Long postId,
                                       @RequestBody PostRequestDto requestDto,
-                                      @PathVariable Long userId) {
-        return postService.updatePost(postId, requestDto, userId);
+                                      @LoginUser User user) {
+        return postService.updatePost(postId, requestDto, user.getUserId());
     }
 
     // TODO : validate authorization header
     @DeleteMapping("/api/v1/post/{postId}")
     @ResponseBody
     public PostResponseDto deletePost(@PathVariable Long postId,
-                                      @PathVariable Long userId) {
-        return postService.deletePost(postId, userId);
+                                      @LoginUser User user) {
+        return postService.deletePost(postId, user.getUserId());
     }
 
     /*@GetMapping("/api/v1/category")
