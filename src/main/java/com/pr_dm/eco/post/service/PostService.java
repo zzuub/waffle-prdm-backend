@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -27,8 +28,8 @@ public class PostService {
 
     @Transactional
     public PostResponseDto createPost(PostRequestDto requestDto, Long userId) {
-        Post post = this.postRepository.save(PostMapper.toPostEntity(requestDto));
         User user = userRepository.findByUserId(userId);
+        Post post = this.postRepository.save(PostMapper.toPostEntity(requestDto, user));
         return PostMapper.toPostResponseDto(post);
     }
 
@@ -50,6 +51,8 @@ public class PostService {
     public PostResponseDto updatePost(Long postId, PostRequestDto requestDto, Long userId) {
         Post post = this.postRepository.findById(postId).orElseThrow();
         User user = userRepository.findByUserId(userId);
+        if (!Objects.equals(post.getUserId(), user.getUserId()))
+            throw new IllegalArgumentException("You are not the author of the post");
         if (!requestDto.getTitle().isEmpty())
             post.setTitle(requestDto.getTitle());
         if (!requestDto.getText().isEmpty())
@@ -64,6 +67,8 @@ public class PostService {
     public PostResponseDto deletePost(Long postId, Long userId) {
         Post post = this.postRepository.findById(postId).orElseThrow();
         User user = userRepository.findByUserId(userId);
+        if (!Objects.equals(post.getUserId(), user.getUserId()))
+            throw new IllegalArgumentException("You are not the author of the post");
         this.postRepository.delete(post);
         return PostMapper.toPostResponseDto(post);
     }
