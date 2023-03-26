@@ -1,5 +1,6 @@
 runtime: java11
 entrypoint: java -Xmx64m -jar Server-0.0.1-SNAPSHOT.jar
+instance_class: F4
 
 automatic_scaling:
   min_instances: 1

@@ -3,7 +3,6 @@ package com.pr_dm.eco.config;
 
 import com.pr_dm.eco.config.oauth.LoginUserArgumentResolver;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -21,19 +20,11 @@ public class WebConfig implements WebMvcConfigurer {
         argumentResolvers.add(loginUserArgumentResolver);
     }
 
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer(){
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST")
-                        .allowedHeaders("*");
-            }
-        };
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*");
+                // .allowedMethods("GET", "POST", "PUT", "DELETE")
+                // .allowedHeaders("*");
     }
-
-
 }

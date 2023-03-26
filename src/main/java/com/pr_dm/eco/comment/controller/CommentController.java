@@ -4,6 +4,7 @@ import com.pr_dm.eco.User.entity.User;
 import com.pr_dm.eco.comment.dto.CommentRequestDto;
 import com.pr_dm.eco.comment.dto.CommentResponseDto;
 import com.pr_dm.eco.comment.service.CommentService;
+import com.pr_dm.eco.config.oauth.LoginUser;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,10 +20,10 @@ public class CommentController {
     // TODO : authorization header -> get user id
     @PostMapping("/api/v1/post/{postId}/comment")
     @ResponseBody
-    public CommentResponseDto createComment(@PathVariable Long userId,
+    public CommentResponseDto createComment(@LoginUser User user,
                                             @PathVariable Long postId,
                                             @RequestBody CommentRequestDto commentRequestDto) {
-        return commentService.createComment(userId, postId, commentRequestDto);
+        return commentService.createComment(user.getUserId(), postId, commentRequestDto);
     }
 
     @GetMapping("/api/v1/post/{postId}/comment/list")

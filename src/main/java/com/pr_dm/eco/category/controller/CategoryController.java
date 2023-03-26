@@ -2,17 +2,10 @@ package com.pr_dm.eco.category.controller;
 
 
 import com.pr_dm.eco.category.dto.CategoryDto;
-import com.pr_dm.eco.category.entity.Category;
 import com.pr_dm.eco.category.service.CategoryService;
-import com.pr_dm.eco.response.ApiResult;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController

@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class PostRequestDto {
-    private Long userId;
     private String title;
     private String text;
     private Long categoryId;
