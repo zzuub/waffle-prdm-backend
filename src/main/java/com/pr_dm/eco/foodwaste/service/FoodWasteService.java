@@ -1,6 +1,5 @@
 package com.pr_dm.eco.foodwaste.service;
 
-import com.pr_dm.eco.foodwaste.dto.FoodWasteLocationResponseDto;
 import com.pr_dm.eco.foodwaste.dto.FoodWasteResponseDto;
 import com.pr_dm.eco.foodwaste.entity.FoodWaste;
 import com.pr_dm.eco.foodwaste.mapper.FoodWasteMapper;
@@ -22,8 +21,15 @@ public class FoodWasteService {
         return foodWaste.stream().map(FoodWasteMapper::toFoodWasteResponseDto).collect(Collectors.toList());
     }
 
-    public List<FoodWasteLocationResponseDto> getCity() {
-        List<FoodWaste> foodWaste = foodWasteRepository.getDistinctLocationOrderByLocation();
-        return foodWaste.stream().map(FoodWasteMapper::toFoodWasteLocationResponseDto).collect(Collectors.toList());
+    public List<String> getCity() {
+        List<String> foodWaste = foodWasteRepository.getDistinctLocationOrderByCity();
+        return foodWaste;
+        // return foodWaste.stream().map(FoodWasteMapper::toFoodWasteLocationResponseDto).collect(Collectors.toList());
+    }
+
+    public List<String> getGu(String cityDo) {
+        List<String> foodWaste = foodWasteRepository.getDistinctLocationOrderByGu(cityDo);
+        return foodWaste;
+        // return foodWaste.stream().map(FoodWasteMapper::toFoodWasteLocationResponseDto).collect(Collectors.toList());
     }
 }

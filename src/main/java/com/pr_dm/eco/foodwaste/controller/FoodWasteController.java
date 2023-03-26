@@ -7,10 +7,7 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -37,7 +34,13 @@ public class FoodWasteController {
 
     @GetMapping("/api/v1/foodwaste/city")
     @ResponseBody
-    public List<FoodWasteLocationResponseDto> getCity() {
+    public List<String> getCity() {
         return foodWasteService.getCity();
+    }
+
+    @GetMapping("/api/v1/foodwaste/city/{cityGu}")
+    @ResponseBody
+    public List<String> getDo(@PathVariable String cityGu) {
+        return foodWasteService.getGu(cityGu);
     }
 }

@@ -13,7 +13,10 @@ public interface FoodWasteRepository extends JpaRepository<FoodWaste, Long> {
     List<FoodWaste> findAllByDateBetweenAndCityDo(Date start, Date end, String cityDo);
 
     @Query("SELECT DISTINCT cityDo FROM FoodWaste ORDER BY cityDo")
-    List<FoodWaste> getDistinctLocationOrderByLocation();
+    List<String> getDistinctLocationOrderByCity();
+
+    @Query("SELECT DISTINCT cityGu FROM FoodWaste WHERE cityDo = ?1 ORDER BY cityGu")
+    List<String> getDistinctLocationOrderByGu(String CityDo);
 
     /*@Query("SELECT DISTINCT cityGu FROM FoodWaste ORDER BY cityGu")
     List<FoodWaste> getDistinctLocationOrderByLocation();*/

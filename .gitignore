@@ -1,3 +1,5 @@
+ src/main/appengine/*.jar
+
 ## USER_DEFINED ##
 *.secret.*
 
