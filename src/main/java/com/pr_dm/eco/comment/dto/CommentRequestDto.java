@@ -9,7 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class CommentRequestDto {
-    private String userId;
-
     private String text;
 }

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,7 @@ public class PostService {
             post.setTitle(requestDto.getTitle());
         if (!requestDto.getText().isEmpty())
             post.setText(requestDto.getText());
-        post.setModifyDate(LocalDateTime.now());
+        post.setModifyDate(LocalDate.now());
         Post updatedPost = this.postRepository.save(post);
         return PostMapper.toPostResponseDto(updatedPost);
     }

@@ -1,6 +1,6 @@
 package com.pr_dm.eco.comment.controller;
 
-import com.pr_dm.eco.User.entity.User;
+import com.pr_dm.eco.User.dto.UserDto;
 import com.pr_dm.eco.comment.dto.CommentRequestDto;
 import com.pr_dm.eco.comment.dto.CommentResponseDto;
 import com.pr_dm.eco.comment.service.CommentService;
@@ -20,7 +20,7 @@ public class CommentController {
     // TODO : authorization header -> get user id
     @PostMapping("/api/v1/post/{postId}/comment")
     @ResponseBody
-    public CommentResponseDto createComment(@LoginUser User user,
+    public CommentResponseDto createComment(@LoginUser UserDto user,
                                             @PathVariable Long postId,
                                             @RequestBody CommentRequestDto commentRequestDto) {
         return commentService.createComment(user.getUserId(), postId, commentRequestDto);
