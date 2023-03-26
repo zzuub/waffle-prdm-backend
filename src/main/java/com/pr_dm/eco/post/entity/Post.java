@@ -7,7 +7,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 
 @Getter
@@ -29,10 +31,11 @@ public class Post {
     private String text;
 
     @CreationTimestamp
-    private LocalDateTime registerDate = LocalDateTime.now();
+    private LocalDate registerDate = LocalDate.now();
+
 
     @LastModifiedDate
-    private LocalDateTime modifyDate;
+    private LocalDate modifyDate;
 
     //@ManyToOne
     //@Enumerated(EnumType.STRING)

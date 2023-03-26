@@ -4,7 +4,7 @@ package com.pr_dm.eco.post.dto;
 import com.pr_dm.eco.post.entity.Post;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,8 +17,8 @@ public class PostResponseDto {
     private String title;
     private String text;
     private Long categoryId;
-    private LocalDateTime registerDate;
-    private LocalDateTime modifyDate;
+    private LocalDate registerDate;
+    private LocalDate modifyDate;
 
     public PostResponseDto(Post post) {
         this.postId = post.getPostId();

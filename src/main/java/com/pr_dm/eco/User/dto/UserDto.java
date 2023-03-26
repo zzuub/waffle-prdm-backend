@@ -2,11 +2,13 @@ package com.pr_dm.eco.User.dto;
 
 import com.pr_dm.eco.User.entity.User;
 import lombok.Getter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.io.Serializable;
 
 @Getter
-public class UserDto {
+
+public class UserDto implements Serializable{
     private Long userId;
     private String name;
     private String nickname;
@@ -19,7 +21,7 @@ public class UserDto {
         this.email = user.getEmail();
     }
 
-    public User getUserId() {
+    public User getId() {
         return User.builder().userId(userId).build();
     }
 }
