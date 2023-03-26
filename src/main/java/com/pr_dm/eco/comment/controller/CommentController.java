@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 
 @RestController
@@ -20,7 +21,7 @@ public class CommentController {
     // TODO : authorization header -> get user id
     @PostMapping("/api/v1/post/{postId}/comment")
     @ResponseBody
-    public CommentResponseDto createComment(@LoginUser UserDto user,
+    public CommentResponseDto createComment(@ApiIgnore @LoginUser UserDto user,
                                             @PathVariable Long postId,
                                             @RequestBody CommentRequestDto commentRequestDto) {
         return commentService.createComment(user.getUserId(), postId, commentRequestDto);

@@ -7,7 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 
@@ -30,10 +30,10 @@ public class Comment {
     private String text;
 
     @CreationTimestamp
-    private LocalDateTime registerDate = LocalDateTime.now();
+    private LocalDate registerDate = LocalDate.now();
 
     @LastModifiedDate
-    private LocalDateTime modifyDate;
+    private LocalDate modifyDate;
 
     @ManyToOne //(fetch=FetchType.LAZY)
     @JoinColumn(name="post_id", nullable=false)
@@ -47,12 +47,4 @@ public class Comment {
         this.post = post;
     }
 
-    /*private void writtenPost(Post post){
-        this.post = post;
-        post.getComments().add(this);
-    }
-
-    public void writeUser(User user){
-        this.userId = userId;
-    }*/
 }
