@@ -3,7 +3,7 @@ package com.pr_dm.eco.comment.dto;
 import com.pr_dm.eco.User.entity.User;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 @Setter
@@ -14,11 +14,9 @@ import java.time.LocalDateTime;
 public class CommentResponseDto {
     private Long postId;
 
-    private Long userId;
-
     private String text;
 
-    private LocalDateTime registerDate;
+    private LocalDate registerDate;
 
-    private LocalDateTime modifyDate;
+    private LocalDate modifyDate;
 }
