@@ -13,7 +13,7 @@ public class CommentMapper {
     public static CommentResponseDto toCommentResponseDto(Comment requestDto) {
         return CommentResponseDto.builder()
                 .postId(requestDto.getCommentId())
-                .userId(requestDto.getUser().getUserId())
+                //.userId(requestDto.getUser().getUserId())
                 .text(requestDto.getText())
                 .registerDate(requestDto.getRegisterDate())
                 .build();
