@@ -2,6 +2,7 @@ package com.pr_dm.eco.config;
 
 ///시큐리티 설정
 
+import com.pr_dm.eco.config.oauth.MyLoginSuccessHandler;
 import com.pr_dm.eco.config.oauth.OAuth2UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,8 @@ public class SecurityConfig {
     private final OAuth2UserInfoService oAuth2UserInfoService;
 
     private final AuthenticationEntryPoint authenticationEntryPoint;
+
+    private final MyLoginSuccessHandler myLoginSuccessHandler;
 
 
     @Bean
@@ -49,7 +52,10 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/"))
                 .oauth2Login(oauth2Login -> oauth2Login
                         .userInfoEndpoint()
-                        .userService(oAuth2UserInfoService));
+                        .userService(oAuth2UserInfoService)
+                        .and()
+                .successHandler(myLoginSuccessHandler)
+                );
         return http.build();
     }
 
@@ -58,4 +64,3 @@ public class SecurityConfig {
         return new CustomAuthenticationEntryPoint();
     }
 }
-//h2 임시로 데이터 만들어두기 or db 연결
